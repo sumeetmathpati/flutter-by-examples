@@ -1,18 +1,50 @@
 <!DOCTYPE html>
 <html lang="{{ site.locale }}">
-  
-  {% include head.html %}
 
-  <body>
-    {% include page-header.html %}
+{% include head.html %}
 
-    <section class="main-content">
+<body>
+  {% include page-header.html %}
+
+  <section class="main-content">
+
+    {% if page.url != "/" %}
+    <a href="{{ site.baseurl }}/" class="btn accordion" style="width: fit-content;">&#129168;</a>
+    <a href="#" class="btn accordion" style="width: fit-content;">&#9776; Index</a>
+    <div id="topics" class="panel" style="display: none;">
       
-      {{ content }}
+      {% assign posts = site[page.section-name]  %}
+      <ul>
+        {% for post in posts %}
+        <li><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></li>
+        {% endfor %}
+      </ul>
 
-      {% include page-footer.html %}
+    </div>
+    {% endif %}
 
-    </section>
+    {{ content }}
 
-  </body>
+    {% include page-footer.html %}
+
+  </section>
+
+  <script>
+    var acc = document.getElementsByClassName("accordion");
+    var i;
+
+    for (i = 0; i < acc.length; i++) {
+      acc[i].addEventListener("click", function () {
+        this.classList.toggle("active");
+        var panel = this.nextElementSibling;
+        if (panel.style.display === "block") {
+          panel.style.display = "none";
+        } else {
+          panel.style.display = "block";
+        }
+      });
+    }
+  </script>
+</body>
+
 </html>

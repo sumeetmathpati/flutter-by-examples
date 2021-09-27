@@ -1,14 +1,16 @@
 # Setup
-title:        Project or Site name
-tagline:      A responsive theme for your project on GitHub Pages
+title:        Flutter by Examples
+tagline:      Learn Flutter by Examples.
 baseurl:      ""
 paginate:     1
 locale:       "en"
+baseurl: "/flutter-by-examples"
+url: "https://sumeetmathpati.github.io"
 
 # About/contact
 author:
-  name:       Author name
-  url:        http://yourhomepage.com 
+  name:       Sumeet Mathpati
+  url:        
 
 # Gems
 gems:
@@ -16,3 +18,24 @@ gems:
 
 #Others
 markdown: kramdown
+kramdown:
+  input: GFM
+  entity_output: :as_input
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    block:
+      line_numbers: true
+
+# Collections
+collections:
+  dart-basics:
+    output: true
+    
+# Default frontmatter
+defaults:
+  - scope:
+      path: ""
+      type: "dart-basics"
+    values:
+      layout: "default"
+      section-name: "dart-basics"
